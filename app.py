@@ -23,7 +23,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 app = Flask(__name__)
 
 # Sets an environment variable GOOGLE_API_KEY with a specified API key.
-os.environ["GOOGLE_API_KEY"] = "AIzaSyDr7c-vD2fVCMoQsijDKXWGVEeodk8xaGY"; 
+os.environ["GOOGLE_API_KEY"] = ""; 
 
 # Defines a route for the home page (/) that sends the index.html file from the web directory.
 @app.route('/')
