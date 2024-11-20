@@ -18,12 +18,23 @@ from flask import Flask, jsonify, request, send_file, send_from_directory
 from langchain_core.messages import HumanMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 
+from dotenv import load_dotenv
+
+# Load environment variables from a .env file
+load_dotenv()
+
+
 
 # Creates a Flask web application named app.
 app = Flask(__name__)
 
-# Sets an environment variable GOOGLE_API_KEY with a specified API key.
-os.environ["GOOGLE_API_KEY"] = ""; 
+# Set GOOGLE_API_KEY from environment variables
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+if not GOOGLE_API_KEY:
+    raise ValueError("GOOGLE_API_KEY environment variable not set")
+
+os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
+
 
 # Defines a route for the home page (/) that sends the index.html file from the web directory.
 @app.route('/')
